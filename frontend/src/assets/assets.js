@@ -68,6 +68,8 @@ import maintain_icon from "./maintain_icon.png";
 import panel_icon from "./panel_icon.png";
 import design_icon from "./design_icon.png";
 import report_icon from "./report_icon.png";
+import guarantee_icon from "./guarantee_icon.png";
+import service_icon from "./service_icon.png";
 import profile_icon from "./profile_icon.png";
 import quality_icon from "./quality_icon.png";
 import search_icon from "./search_icon.png";
@@ -95,6 +97,8 @@ export const assets = {
   panel_icon,
   design_icon,
   report_icon,
+  guarantee_icon,
+  service_icon,
   profile_icon,
   quality_icon,
   search_icon,
