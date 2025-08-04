@@ -51,9 +51,25 @@ a.active hr{
     filter: brightness(0) saturate(100%) invert(84%) sepia(29%) saturate(1567%) hue-rotate(24deg) brightness(101%) contrast(103%);
   }
   
+
+  
   /* Payment method styling */
   .payment-logo {
     filter: brightness(0) invert(1);
+  }
+  
+  .logo-shine {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    animation: textShine 3s ease-in-out infinite;
+  }
+  
+  @keyframes textShine {
+    0%, 100% {
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    }
+    50% {
+      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+    }
   }
   
   /* Subtle metallic gold glow effect for hero section */
