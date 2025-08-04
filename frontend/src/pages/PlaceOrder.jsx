@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 const PlaceOrder = () => {
 
     const [method, setMethod] = useState('cod');
-    const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext);
+    const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products, userId } = useContext(ShopContext);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -62,24 +62,41 @@ const PlaceOrder = () => {
 
             let orderItems = []
 
-            for (const items in cartItems) {
-                for (const item in cartItems[items]) {
-                    if (cartItems[items][item] > 0) {
-                        const itemInfo = structuredClone(products.find(product => product._id === items))
-                        if (itemInfo) {
-                            itemInfo.size = item
-                            itemInfo.quantity = cartItems[items][item]
-                            orderItems.push(itemInfo)
-                        }
+            for (const itemId in cartItems) {
+                if (cartItems[itemId] > 0) {
+                    const itemInfo = products.find(product => product._id === itemId)
+                    if (itemInfo) {
+                        orderItems.push({
+                            _id: itemInfo._id,
+                            name: itemInfo.name,
+                            price: itemInfo.price,
+                            image: itemInfo.image,
+                            quantity: cartItems[itemId],
+                            category: itemInfo.category
+                        })
                     }
                 }
             }
 
+            // Extract userId from token if not available
+            let currentUserId = userId;
+            if (!currentUserId && token) {
+                try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    currentUserId = payload.id;
+                } catch (e) {
+                    console.log("Could not extract userId from token");
+                }
+            }
+            
             let orderData = {
+                userId: currentUserId,
                 address: formData,
                 items: orderItems,
                 amount: getCartAmount() + delivery_fee
             }
+            
+            console.log("Placing order with data:", orderData);
             
 
             switch (method) {

@@ -8,7 +8,7 @@ const ProductItem = ({ id, image, name, qty, price }) => {
     if (qty === 0) {
       return { text: "Out of Stock", color: "text-red-500" };
     } else {
-      return { text: "In Stock : " + `${qty}`, color: "text-green-500" };
+      return { text: "In Stock", color: "text-green-500" };
     }
   };
   const availability = getAvailability();
@@ -34,9 +34,7 @@ const ProductItem = ({ id, image, name, qty, price }) => {
               {currency}
               {price}
             </span>
-            <span className={availability.color}>
-              {availability.text}
-            </span>
+            <span className={availability.color}>{availability.text}</span>
           </p>
         </div>
       </div>

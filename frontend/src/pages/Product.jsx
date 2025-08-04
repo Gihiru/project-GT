@@ -21,6 +21,18 @@ const Product = () => {
     });
   };
 
+  const getAvailability = () => {
+    if (productData.qty === 0) {
+      return { text: "Out of Stock", color: "text-red-500" };
+    } else {
+      return {
+        text: `${productData.qty}` + " In Stock",
+        color: "text-green-500",
+      };
+    }
+  };
+  const availability = getAvailability();
+
   useEffect(() => {
     fetchProductData();
   }, [productId, products]);
@@ -65,6 +77,10 @@ const Product = () => {
           <p className="mt-5 text-gray-500 md:w-4/5">
             {productData.description}
           </p>
+          <p className="mt-5 font-medium">
+            <span className={availability.color}>{availability.text}</span>
+          </p>
+
           {/* ---------- Qty Selection ------------- */}
           <div className="flex flex-col gap-2 my-8">
             <label htmlFor="qty" className="font-medium">
@@ -74,21 +90,39 @@ const Product = () => {
               id="qty"
               type="number"
               min="1"
+              max={productData.qty}
               value={qty}
               onChange={(e) => {
-                const value = Math.max(1, parseInt(e.target.value || 1));
+                const value = Math.min(productData.qty, Math.max(1, parseInt(e.target.value || 1)));
                 setQty(value);
               }}
               className="w-full sm:w-[120px] px-3 py-2 border border-gray-300 rounded"
               placeholder="1"
+              disabled={productData.qty === 0}
             />
+            {productData.qty > 0 && (
+              <p className="text-xs text-gray-500">Max available: {productData.qty}</p>
+            )}
           </div>
 
           <button
-            onClick={() => addToCart(productData._id, size)}
-            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+            onClick={() => {
+              const quantity = parseInt(qty) || 1;
+              if (quantity > productData.qty) {
+                alert(`Only ${productData.qty} items available in stock`);
+                return;
+              }
+              addToCart(productData._id, quantity);
+              setQty("");
+            }}
+            disabled={productData.qty === 0}
+            className={`px-8 py-3 text-sm ${
+              productData.qty === 0
+                ? "bg-gray-400 text-gray-600 cursor-not-allowed"
+                : "bg-black text-white active:bg-gray-700"
+            }`}
           >
-            ADD TO CART
+            {productData.qty === 0 ? "OUT OF STOCK" : "ADD TO CART"}
           </button>
           <hr className="mt-8 sm:w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
@@ -106,12 +140,8 @@ const Product = () => {
           <p className="border px-5 py-3 text-sm">Reviews (0)</p>
         </div>
         <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
-          <p>
-            {productData.description}
-          </p>
-          <p>
-            
-          </p>
+          <p>{productData.description}</p>
+          <p></p>
         </div>
       </div>
 
