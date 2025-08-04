@@ -80,17 +80,29 @@ const Collection = () => {
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-yellow-600/30">
       {/* Filter Options */}
       <div className="min-w-60">
-        <p
-          onClick={() => setShowFilter(!showFilter)}
-          className="my-2 text-xl flex items-center cursor-pointer gap-2 text-yellow-400 font-semibold"
-        >
-          FILTERS
-          <img
-            className={`h-3 sm:hidden ${showFilter ? "rotate-90" : ""}`}
-            src={assets.dropdown_icon}
-            alt=""
-          />
-        </p>
+        <div className="flex items-center justify-between">
+          <p
+            onClick={() => setShowFilter(!showFilter)}
+            className="my-2 text-xl flex items-center cursor-pointer gap-2 text-yellow-400 font-semibold"
+          >
+            FILTERS
+            <img
+              className={`h-3 sm:hidden ${showFilter ? "rotate-90" : ""}`}
+              src={assets.dropdown_icon}
+              alt=""
+            />
+          </p>
+          <button
+            onClick={() => {
+              setCategory([]);
+              setQty([]);
+              setSortType("relavent");
+            }}
+            className="text-sm bg-yellow-500 text-gray-900 px-3 py-1 rounded hover:bg-yellow-400 transition-colors font-medium"
+          >
+            Reset
+          </button>
+        </div>
         {/* Category Filter */}
         <div
           className={`border border-yellow-600/30 bg-gray-800/50 pl-5 py-3 mt-6 rounded-lg ${
@@ -104,6 +116,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"wiring&cables"}
+                checked={category.includes("wiring&cables")}
                 onChange={toggleCategory}
               />{" "}
               Wiring & Cables
@@ -113,6 +126,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"cableProtection"}
+                checked={category.includes("cableProtection")}
                 onChange={toggleCategory}
               />{" "}
               Cable Protection
@@ -122,6 +136,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"switchgear&panels"}
+                checked={category.includes("switchgear&panels")}
                 onChange={toggleCategory}
               />{" "}
               Switchgear & Panels
@@ -131,6 +146,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"lightningSolutions"}
+                checked={category.includes("lightningSolutions")}
                 onChange={toggleCategory}
               />{" "}
               Lightning Solutions
@@ -140,6 +156,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"tools&safetyGear"}
+                checked={category.includes("tools&safetyGear")}
                 onChange={toggleCategory}
               />{" "}
               Tools & Safety Gear
@@ -149,6 +166,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"energyManagement"}
+                checked={category.includes("energyManagement")}
                 onChange={toggleCategory}
               />{" "}
               Energy Management
@@ -158,6 +176,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"industrialComponents"}
+                checked={category.includes("industrialComponents")}
                 onChange={toggleCategory}
               />{" "}
               Industrial Components
@@ -167,6 +186,7 @@ const Collection = () => {
                 className="w-3"
                 type="checkbox"
                 value={"accessories"}
+                checked={category.includes("accessories")}
                 onChange={toggleCategory}
               />{" "}
               Accessories

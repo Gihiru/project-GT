@@ -17,7 +17,7 @@ const Orders = () => {
         try {
           const payload = JSON.parse(atob(token.split('.')[1]));
           currentUserId = payload.id;
-          console.log("Extracted userId from token:", currentUserId);
+          console.log("Extracted userId from token");
         } catch (e) {
           console.log("Could not extract userId from token");
         }
@@ -29,16 +29,16 @@ const Orders = () => {
         return;
       }
 
-      console.log("Fetching orders - userId:", currentUserId, "backendUrl:", backendUrl);
+      console.log("Fetching orders");
       const response = await axios.post(
         `${backendUrl}/api/order/userorders`,
         { userId: currentUserId },
         { headers: { token } }
       );
       
-      console.log("Full response:", response);
+      console.log("Full response received");
 
-      console.log("Order response:", response.data);
+      console.log("Order response received");
 
       if (response.data.success) {
         let allOrdersItem = [];
@@ -59,18 +59,18 @@ const Orders = () => {
               });
             }
           });
-          console.log("Processed orders:", allOrdersItem);
+          console.log("Processed orders count:", allOrdersItem.length);
           setOrderData(allOrdersItem.reverse());
         } else {
           console.log("No orders found in response");
           setOrderData([]);
         }
       } else {
-        console.log("Failed to fetch orders:", response.data.message);
+        console.log("Failed to fetch orders");
         setOrderData([]);
       }
     } catch (error) {
-      console.log("Error fetching orders:", error);
+      console.log("Error fetching orders");
       setOrderData([]);
     } finally {
       setLoading(false);
@@ -78,7 +78,7 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    console.log("Orders useEffect - token:", !!token, "userId:", userId, "backendUrl:", backendUrl);
+    console.log("Orders useEffect - token:", !!token, "hasUserId:", !!userId);
     if (token) {
       loadOrderData();
     } else {

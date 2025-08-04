@@ -14,7 +14,7 @@ const Add = ({ token }) => {
   const [description, setDescription] = useState("");
   const [qty, setQty] = useState(0);
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("wiring&cables");
   const [bestseller, setBestseller] = useState(false);
 
   const onSubmitHandler = async (e) => {
@@ -153,7 +153,9 @@ const Add = ({ token }) => {
           <p className="mb-2">Product category</p>
           <select
             onChange={(e) => setCategory(e.target.value)}
+            value={category}
             className="w-full px-3 py-2"
+            required
           >
             <option value="wiring&cables">Wiring & Cables</option>
             <option value="cableProtection">Cable Protection</option>
