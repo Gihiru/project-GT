@@ -99,36 +99,36 @@ const Orders = () => {
   };
 
   return (
-    <div className="border-t pt-16">
+    <div className="border-t border-yellow-600/30 pt-16">
       <div className="text-2xl">
         <Title text1={"MY"} text2={"ORDERS"} />
       </div>
 
       <div className="mt-4">
         {!token && (
-          <div className="text-center py-8 text-gray-600">
+          <div className="text-center py-8 text-gray-300">
             Please log in to view your orders
           </div>
         )}
 
         {token && !loading && orderData.length === 0 && (
-          <div className="text-center py-8 text-gray-600">
+          <div className="text-center py-8 text-gray-300">
             No orders found
-            <button onClick={debugAuth} className="ml-4 text-blue-500 underline">
+            <button onClick={debugAuth} className="ml-4 text-yellow-400 underline hover:text-yellow-300">
               Debug Auth
             </button>
           </div>
         )}
         
         {loading && (
-          <div className="text-center py-8 text-gray-600">Loading orders...</div>
+          <div className="text-center py-8 text-gray-300">Loading orders...</div>
         )}
 
         {token &&
           orderData.map((item, index) => (
             <div
               key={item.orderId + "-" + index}
-              className="py-4 border-t border-b text-gray-700 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
+              className="py-4 border-t border-b border-yellow-600/30 bg-gray-800/30 rounded-lg mb-4 px-4 text-gray-300 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
             >
               <div className="flex items-start gap-6 text-sm">
                 <img
@@ -140,30 +140,30 @@ const Orders = () => {
                   }}
                 />
                 <div>
-                  <p className="sm:text-base font-medium">{item.name}</p>
-                  <div className="flex flex-wrap items-center gap-3 mt-1 text-base text-gray-700">
-                    <p>
+                  <p className="sm:text-base font-medium text-gray-100">{item.name}</p>
+                  <div className="flex flex-wrap items-center gap-3 mt-1 text-base text-gray-300">
+                    <p className="text-yellow-400 font-semibold">
                       {currency}
                       {item.price}
                     </p>
                     <p>Quantity: {item.qty}</p>
                   </div>
-                  <p className="mt-1">
+                  <p className="mt-1 text-gray-300">
                     Date:{" "}
                     <span className="text-gray-400">
                       {new Date(item.date).toLocaleDateString()}
                     </span>
                   </p>
-                  <p className="mt-1">
+                  <p className="mt-1 text-gray-300">
                     Payment:{" "}
                     <span className="text-gray-400">
                       {item.paymentMethod || "N/A"}
                     </span>
                   </p>
-                  <p className="mt-1">
+                  <p className="mt-1 text-gray-300">
                     Payment Status:{" "}
                     <span
-                      className={`text-${item.payment ? "green" : "red"}-500`}
+                      className={`${item.payment ? "text-green-400" : "text-red-400"}`}
                     >
                       {item.payment ? "Paid" : "Pending"}
                     </span>
@@ -183,13 +183,13 @@ const Orders = () => {
                         : "bg-gray-500"
                     }`}
                   ></div>
-                  <p className="text-sm md:text-base">
+                  <p className="text-sm md:text-base text-gray-100">
                     {item.status || "Processing"}
                   </p>
                 </div>
                 <button
                   onClick={loadOrderData}
-                  className="border px-4 py-2 text-sm font-medium rounded-sm hover:bg-gray-50 transition-colors"
+                  className="border border-yellow-600 bg-yellow-500 text-gray-900 px-4 py-2 text-sm font-medium rounded hover:bg-yellow-400 transition-colors"
                 >
                   Refresh Status
                 </button>

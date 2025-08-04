@@ -250,59 +250,59 @@ const Account = () => {
   }
 
   return (
-    <div className="border-t pt-16">
+    <div className="border-t border-yellow-600/30 pt-16">
       <div className="text-2xl mb-8">
         <Title text1={"MY"} text2={"ACCOUNT"} />
       </div>
 
       {/* Account Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-blue-50 p-4 rounded-lg text-center">
-          <h3 className="text-2xl font-bold text-blue-600">{orderStats.totalOrders}</h3>
-          <p className="text-gray-600">Total Orders</p>
+        <div className="bg-gray-800/50 border border-yellow-600/30 p-4 rounded-lg text-center">
+          <h3 className="text-2xl font-bold text-yellow-400">{orderStats.totalOrders}</h3>
+          <p className="text-gray-300">Total Orders</p>
         </div>
-        <div className="bg-yellow-50 p-4 rounded-lg text-center">
-          <h3 className="text-2xl font-bold text-yellow-600">{orderStats.pendingOrders}</h3>
-          <p className="text-gray-600">Pending Orders</p>
+        <div className="bg-gray-800/50 border border-yellow-600/30 p-4 rounded-lg text-center">
+          <h3 className="text-2xl font-bold text-yellow-400">{orderStats.pendingOrders}</h3>
+          <p className="text-gray-300">Pending Orders</p>
         </div>
-        <div className="bg-green-50 p-4 rounded-lg text-center">
-          <h3 className="text-2xl font-bold text-green-600">{orderStats.completedOrders}</h3>
-          <p className="text-gray-600">Completed Orders</p>
+        <div className="bg-gray-800/50 border border-yellow-600/30 p-4 rounded-lg text-center">
+          <h3 className="text-2xl font-bold text-green-400">{orderStats.completedOrders}</h3>
+          <p className="text-gray-300">Completed Orders</p>
         </div>
-        <div className="bg-purple-50 p-4 rounded-lg text-center">
-          <h3 className="text-2xl font-bold text-purple-600">Rs. {orderStats.totalSpent}</h3>
-          <p className="text-gray-600">Total Spent</p>
+        <div className="bg-gray-800/50 border border-yellow-600/30 p-4 rounded-lg text-center">
+          <h3 className="text-2xl font-bold text-yellow-400">Rs. {orderStats.totalSpent}</h3>
+          <p className="text-gray-300">Total Spent</p>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b mb-6">
+      <div className="flex border-b border-yellow-600/30 mb-6">
         <button
           onClick={() => setActiveTab("profile")}
-          className={`px-6 py-3 font-medium ${
+          className={`px-6 py-3 font-medium transition-colors ${
             activeTab === "profile"
-              ? "border-b-2 border-black text-black"
-              : "text-gray-500 hover:text-gray-700"
+              ? "border-b-2 border-yellow-500 text-yellow-400"
+              : "text-gray-400 hover:text-gray-200"
           }`}
         >
           Profile
         </button>
         <button
           onClick={() => setActiveTab("password")}
-          className={`px-6 py-3 font-medium ${
+          className={`px-6 py-3 font-medium transition-colors ${
             activeTab === "password"
-              ? "border-b-2 border-black text-black"
-              : "text-gray-500 hover:text-gray-700"
+              ? "border-b-2 border-yellow-500 text-yellow-400"
+              : "text-gray-400 hover:text-gray-200"
           }`}
         >
           Change Password
         </button>
         <button
           onClick={() => setActiveTab("orders")}
-          className={`px-6 py-3 font-medium ${
+          className={`px-6 py-3 font-medium transition-colors ${
             activeTab === "orders"
-              ? "border-b-2 border-black text-black"
-              : "text-gray-500 hover:text-gray-700"
+              ? "border-b-2 border-yellow-500 text-yellow-400"
+              : "text-gray-400 hover:text-gray-200"
           }`}
         >
           My Orders
@@ -314,56 +314,56 @@ const Account = () => {
         {activeTab === "profile" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* User Information Display */}
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <h3 className="text-lg font-medium mb-4">User Information</h3>
+            <div className="bg-gray-800/50 border border-yellow-600/30 p-6 rounded-lg">
+              <h3 className="text-lg font-medium mb-4 text-yellow-400">User Information</h3>
               {loading ? (
                 <div className="text-center py-8">
-                  <p className="text-gray-500">Loading user information...</p>
+                  <p className="text-gray-400">Loading user information...</p>
                 </div>
               ) : (
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    <div className="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-gray-900 font-bold text-lg">
                       {userInfo.name ? userInfo.name.charAt(0).toUpperCase() : 'U'}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">{userInfo.name || 'Not available'}</p>
-                      <p className="text-sm text-gray-500">User</p>
+                      <p className="font-medium text-gray-100">{userInfo.name || 'Not available'}</p>
+                      <p className="text-sm text-gray-400">User</p>
                     </div>
                   </div>
                 
-                <div className="border-t pt-4 space-y-3">
+                <div className="border-t border-yellow-600/30 pt-4 space-y-3">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Full Name:</span>
-                    <span className="font-medium">{userInfo.name || 'Not set'}</span>
+                    <span className="text-gray-400">Full Name:</span>
+                    <span className="font-medium text-gray-200">{userInfo.name || 'Not set'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Email:</span>
-                    <span className="font-medium">{userInfo.email || 'Not set'}</span>
+                    <span className="text-gray-400">Email:</span>
+                    <span className="font-medium text-gray-200">{userInfo.email || 'Not set'}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">User ID:</span>
-                    <span className="font-mono text-xs bg-gray-200 px-2 py-1 rounded">
+                    <span className="text-gray-400">User ID:</span>
+                    <span className="font-mono text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded">
                       {userInfo._id || userId || 'Not available'}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Account Status:</span>
-                    <span className="text-green-600 font-medium">Active</span>
+                    <span className="text-gray-400">Account Status:</span>
+                    <span className="text-green-400 font-medium">Active</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Member Since:</span>
-                    <span className="font-medium">
+                    <span className="text-gray-400">Member Since:</span>
+                    <span className="font-medium text-gray-200">
                       {userInfo.createdAt ? new Date(userInfo.createdAt).toLocaleDateString() : 'N/A'}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Total Spent:</span>
-                    <span className="font-medium text-green-600">Rs. {orderStats.totalSpent}</span>
+                    <span className="text-gray-400">Total Spent:</span>
+                    <span className="font-medium text-yellow-400">Rs. {orderStats.totalSpent}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Favorite Payment:</span>
-                    <span className="font-medium">COD</span>
+                    <span className="text-gray-400">Favorite Payment:</span>
+                    <span className="font-medium text-gray-200">COD</span>
                   </div>
                 </div>
                 </div>
@@ -372,31 +372,31 @@ const Account = () => {
 
             {/* Edit Profile Form */}
             <div>
-              <h3 className="text-lg font-medium mb-4">Edit Profile</h3>
+              <h3 className="text-lg font-medium mb-4 text-yellow-400">Edit Profile</h3>
               <form onSubmit={updateProfile} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Name</label>
+                  <label className="block text-sm font-medium mb-1 text-gray-300">Name</label>
                   <input
                     type="text"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded-md focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Email</label>
+                  <label className="block text-sm font-medium mb-1 text-gray-300">Email</label>
                   <input
                     type="email"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded-md focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
                     required
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800 transition-colors"
+                  className="bg-yellow-500 text-gray-900 px-6 py-2 rounded-md hover:bg-yellow-400 transition-colors font-semibold"
                 >
                   Update Profile
                 </button>
@@ -407,43 +407,43 @@ const Account = () => {
 
         {activeTab === "password" && (
           <div className="max-w-md">
-            <h3 className="text-lg font-medium mb-4">Change Password</h3>
+            <h3 className="text-lg font-medium mb-4 text-yellow-400">Change Password</h3>
             <form onSubmit={changePassword} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Current Password</label>
+                <label className="block text-sm font-medium mb-1 text-gray-300">Current Password</label>
                 <input
                   type="password"
                   value={passwordData.currentPassword}
                   onChange={(e) => setPasswordData({...passwordData, currentPassword: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded-md"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">New Password</label>
+                <label className="block text-sm font-medium mb-1 text-gray-300">New Password</label>
                 <input
                   type="password"
                   value={passwordData.newPassword}
                   onChange={(e) => setPasswordData({...passwordData, newPassword: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded-md"
                   minLength="8"
                   required
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Confirm New Password</label>
+                <label className="block text-sm font-medium mb-1 text-gray-300">Confirm New Password</label>
                 <input
                   type="password"
                   value={passwordData.confirmPassword}
                   onChange={(e) => setPasswordData({...passwordData, confirmPassword: e.target.value})}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                  className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded-md"
                   minLength="8"
                   required
                 />
               </div>
               <button
                 type="submit"
-                className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-800"
+                className="bg-yellow-500 text-gray-900 px-6 py-2 rounded-md hover:bg-yellow-400 font-semibold"
               >
                 Change Password
               </button>
@@ -454,20 +454,20 @@ const Account = () => {
         {activeTab === "orders" && (
           <div>
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-medium">Recent Orders</h3>
+              <h3 className="text-lg font-medium text-yellow-400">Recent Orders</h3>
               <button
                 onClick={() => navigate("/orders")}
-                className="text-blue-600 hover:text-blue-800"
+                className="text-yellow-400 hover:text-yellow-300"
               >
                 View All Orders →
               </button>
             </div>
-            <p className="text-gray-600">
+            <p className="text-gray-300">
               You have {orderStats.totalOrders} total orders. 
               <span className="ml-2">
                 <button
                   onClick={() => navigate("/orders")}
-                  className="text-blue-600 hover:underline"
+                  className="text-yellow-400 hover:underline"
                 >
                   Click here to view all orders
                 </button>
@@ -478,10 +478,10 @@ const Account = () => {
       </div>
 
       {/* Logout Section */}
-      <div className="mt-12 pt-6 border-t">
+      <div className="mt-12 pt-6 border-t border-yellow-600/30">
         <button
           onClick={logout}
-          className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600"
+          className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition-colors"
         >
           Logout
         </button>

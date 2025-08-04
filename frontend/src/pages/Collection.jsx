@@ -77,12 +77,12 @@ const Collection = () => {
   }, [sortType]);
 
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-yellow-600/30">
       {/* Filter Options */}
       <div className="min-w-60">
         <p
           onClick={() => setShowFilter(!showFilter)}
-          className="my-2 text-xl flex items-center cursor-pointer gap-2"
+          className="my-2 text-xl flex items-center cursor-pointer gap-2 text-yellow-400 font-semibold"
         >
           FILTERS
           <img
@@ -93,12 +93,12 @@ const Collection = () => {
         </p>
         {/* Category Filter */}
         <div
-          className={`border border-gray-300 pl-5 py-3 mt-6 ${
+          className={`border border-yellow-600/30 bg-gray-800/50 pl-5 py-3 mt-6 rounded-lg ${
             showFilter ? "" : "hidden"
           } sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">CATEGORIES</p>
-          <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
+          <p className="mb-3 text-sm font-medium text-yellow-400">CATEGORIES</p>
+          <div className="flex flex-col gap-2 text-sm font-light text-gray-300">
             <p className="flex gap-2">
               <input
                 className="w-3"
@@ -182,7 +182,7 @@ const Collection = () => {
           {/* Porduct Sort */}
           <select
             onChange={(e) => setSortType(e.target.value)}
-            className="border-2 border-gray-300 text-sm px-2"
+            className="border-2 border-yellow-600 bg-gray-700 text-gray-100 text-sm px-2 py-1 rounded"
           >
             <option value="relavent">Sort by: Relavent</option>
             <option value="low-high">Sort by: Low to High</option>

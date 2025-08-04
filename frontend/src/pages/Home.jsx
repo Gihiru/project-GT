@@ -7,12 +7,22 @@ import NewsletterBox from '../components/NewsletterBox'
 
 const Home = () => {
   return (
-    <div>
-      <Hero />
-      <BestSeller />
-      <LatestCollection/>
-      <OurPolicy/>
-      <NewsletterBox/>
+    <div className="bg-gray-900 min-h-screen">
+      <div className="bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+        <Hero />
+      </div>
+      <div className="bg-gray-900">
+        <BestSeller />
+      </div>
+      <div className="bg-gray-800">
+        <LatestCollection/>
+      </div>
+      <div className="bg-gray-900">
+        <OurPolicy/>
+      </div>
+      <div className="bg-gradient-to-t from-gray-900 to-gray-800">
+        <NewsletterBox/>
+      </div>
     </div>
   )
 }

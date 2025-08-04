@@ -30,8 +30,8 @@ const Cart = () => {
   }, [cartItems, products]);
 
   return (
-    <div className="border-t pt-14">
-      <div className=" text-2xl mb-3">
+    <div className="border-t border-yellow-600/30 pt-14">
+      <div className="text-2xl mb-3">
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
 
@@ -44,7 +44,7 @@ const Cart = () => {
           return (
             <div
               key={index}
-              className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
+              className="py-4 border-t border-b border-yellow-600/30 bg-gray-800/30 rounded-lg mb-2 px-4 text-gray-300 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
             >
               <div className=" flex items-start gap-6">
                 <img
@@ -53,15 +53,15 @@ const Cart = () => {
                   alt=""
                 />
                 <div>
-                  <p className="text-xs sm:text-lg font-medium">
+                  <p className="text-xs sm:text-lg font-medium text-gray-100">
                     {productData.name}
                   </p>
                   <div className="flex items-center gap-5 mt-2">
-                    <p>
+                    <p className="text-yellow-400 font-semibold">
                       {currency}
                       {productData.price}
                     </p>
-                    <p className="px-2 sm:px-3 sm:py-1 border bg-slate-50">
+                    <p className="px-2 sm:px-3 sm:py-1 border border-yellow-600 bg-gray-700 text-gray-100 rounded">
                       {item.quantity}
                     </p>
                   </div>
@@ -75,13 +75,13 @@ const Cart = () => {
                       updateQuantity(item._id, Number(value));
                     }
                   }}
-                  className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1"
+                  className="border border-yellow-600 bg-gray-700 text-gray-100 max-w-10 sm:max-w-20 px-1 sm:px-2 py-1 rounded"
                   type="number"
                   min={1}
                   max={productData.qty}
                   defaultValue={item.quantity}
                 />
-                <p className="text-xs text-gray-500 mt-1">Max: {productData.qty}</p>
+                <p className="text-xs text-gray-400 mt-1">Max: {productData.qty}</p>
                 {item.quantity > productData.qty && (
                   <p className="text-xs text-red-500">Exceeds stock!</p>
                 )}
@@ -103,7 +103,7 @@ const Cart = () => {
           <div className=" w-full text-end">
             <button
               onClick={() => navigate("/place-order")}
-              className="bg-black text-white text-sm my-8 px-8 py-3"
+              className="bg-yellow-500 text-gray-900 text-sm my-8 px-8 py-3 rounded hover:bg-yellow-400 transition-colors font-semibold"
             >
               PROCEED TO CHECKOUT
             </button>

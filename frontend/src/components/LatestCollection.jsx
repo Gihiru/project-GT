@@ -102,23 +102,23 @@ const BestSeller = () => {
 
         <div className="px-4 py-12">
           <div className="mx-auto max-w-7xl">
-            <div className="relative [&_.slick-slide]:px-3 [&_.slick-list]:mx-[-12px] [&_.slick-prev]:left-[-45px] [&_.slick-next]:right-[-45px] [&_.slick-prev]:w-10 [&_.slick-next]:w-10 [&_.slick-prev]:h-10 [&_.slick-next]:h-10 [&_.slick-prev]:bg-white [&_.slick-next]:bg-white [&_.slick-prev]:rounded-full [&_.slick-next]:rounded-full [&_.slick-prev]:shadow-lg [&_.slick-next]:shadow-lg hover:[&_.slick-prev]:bg-white hover:[&_.slick-next]:bg-white [&_.slick-prev]:z-10 [&_.slick-next]:z-10 [&_.slick-prev]:before:content-['←'] [&_.slick-next]:before:content-['→'] [&_.slick-prev]:before:text-gray-600 [&_.slick-next]:before:text-gray-600 [&_.slick-dots]:bottom-[-30px] [&_.slick-dots_li_button:before]:text-gray-300 [&_.slick-dots_li.slick-active_button:before]:text-blue-600">
+            <div className="relative [&_.slick-slide]:px-3 [&_.slick-list]:mx-[-12px] [&_.slick-prev]:left-[-45px] [&_.slick-next]:right-[-45px] [&_.slick-prev]:w-10 [&_.slick-next]:w-10 [&_.slick-prev]:h-10 [&_.slick-next]:h-10 [&_.slick-prev]:bg-yellow-500 [&_.slick-next]:bg-yellow-500 [&_.slick-prev]:rounded-full [&_.slick-next]:rounded-full [&_.slick-prev]:shadow-lg [&_.slick-next]:shadow-lg hover:[&_.slick-prev]:bg-yellow-400 hover:[&_.slick-next]:bg-yellow-400 [&_.slick-prev]:z-10 [&_.slick-next]:z-10 [&_.slick-prev]:before:content-['←'] [&_.slick-next]:before:content-['→'] [&_.slick-prev]:before:text-gray-900 [&_.slick-next]:before:text-gray-900 [&_.slick-dots]:bottom-[-30px] [&_.slick-dots_li_button:before]:text-gray-500 [&_.slick-dots_li.slick-active_button:before]:text-yellow-500">
               <Slider {...settings}>
                 {services.map((service, index) => (
                   <div key={index}>
                     <div className="mx-3">
-                      <div className="flex flex-col items-center p-6 transition-all duration-300 hover:shadow-lg rounded-lg bg-white min-h-[220px] border border-gray-100">
-                        <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                      <div className="flex flex-col items-center p-6 transition-all duration-300 hover:shadow-xl hover:shadow-yellow-500/20 rounded-lg bg-gray-800 min-h-[220px] border border-yellow-600/30 hover:border-yellow-500/50">
+                        <div className="w-16 h-16 mb-4 flex items-center justify-center bg-yellow-500/10 rounded-full">
                           <img
                             src={service.icon}
-                            className="w-12 h-12 object-contain"
+                            className="w-12 h-12 object-contain filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
                             alt={service.title}
                           />
                         </div>
-                        <p className="font-semibold text-lg mb-3 text-center h-14 flex items-center justify-center">
+                        <p className="font-semibold text-lg mb-3 text-center h-14 flex items-center justify-center text-yellow-400">
                           {service.title}
                         </p>
-                        <p className="text-gray-400 text-sm text-center h-10">
+                        <p className="text-gray-300 text-sm text-center h-10">
                           {service.desc}
                         </p>
                       </div>

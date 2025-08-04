@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #111827; /* gray-900 */
+    color: #f3f4f6; /* gray-100 */
+}
+
 a.active hr{
     display: block;
 }
@@ -22,9 +27,63 @@ a.active hr{
     display: none;
   }
   
+  /* Dark theme overrides */
+  input, textarea, select {
+    background-color: #374151; /* gray-700 */
+    color: #f3f4f6; /* gray-100 */
+    border-color: #d97706; /* yellow-600 */
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: #9ca3af; /* gray-400 */
+  }
+  
+  /* Navigation glow effects */
+  .nav-glow {
+    filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
+  }
+  
+  .nav-glow:hover {
+    filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.8));
+  }
+  
+  .gold-icon {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(29%) saturate(1567%) hue-rotate(24deg) brightness(101%) contrast(103%);
+  }
+  
+  /* Payment method styling */
+  .payment-logo {
+    filter: brightness(0) invert(1);
+  }
+  
+  /* Subtle metallic gold glow effect for hero section */
+  .hero-glow {
+    position: relative;
+    box-shadow: 
+      0 0 8px rgba(212, 175, 55, 0.3),
+      inset 0 1px 0 rgba(255, 215, 0, 0.2);
+    animation: metallicGlow 4s ease-in-out infinite;
+  }
+  
+  @keyframes metallicGlow {
+    0%, 100% {
+      box-shadow: 
+        0 0 8px rgba(212, 175, 55, 0.3),
+        0 0 16px rgba(212, 175, 55, 0.15),
+        inset 0 1px 0 rgba(255, 215, 0, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 0 12px rgba(212, 175, 55, 0.4),
+        0 0 24px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+    }
+  }
+  
   @media (max-width:640px) {
     a.active{
-        background-color: black;
+        background-color: #d97706; /* yellow-600 */
         color: white;
+        box-shadow: 0 0 15px rgba(234, 179, 8, 0.7);
     }
   }
