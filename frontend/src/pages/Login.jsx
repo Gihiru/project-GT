@@ -59,11 +59,11 @@ const Login = () => {
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-800"
+      className="flex flex-col items-center w-[90%] sm:max-w-96 m-auto mt-14 gap-4 text-gray-100 bg-gray-800/50 border border-yellow-600/30 rounded-lg p-8"
     >
-      <div className="inline-flex items-center gap-2 mb-2 mt-10">
-        <p className="prata-regular text-3xl">{currentState}</p>
-        <hr className="border-none h-[1.5px] w-8 bg-gray-800" />
+      <div className="inline-flex items-center gap-2 mb-2 mt-2">
+        <p className="prata-regular text-3xl text-yellow-400">{currentState}</p>
+        <hr className="border-none h-[1.5px] w-8 bg-yellow-500" />
       </div>
       {currentState === "Login" ? (
         ""
@@ -72,7 +72,7 @@ const Login = () => {
           onChange={(e) => setName(e.target.value)}
           value={name}
           type="text"
-          className="w-full px-3 py-2 border border-gray-800"
+          className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
           placeholder="Name"
           required
         />
@@ -81,7 +81,7 @@ const Login = () => {
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         type="email"
-        className="w-full px-3 py-2 border border-gray-800"
+        className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
         placeholder="Email"
         required
       />
@@ -89,29 +89,29 @@ const Login = () => {
         onChange={(e) => setPasword(e.target.value)}
         value={password}
         type="password"
-        className="w-full px-3 py-2 border border-gray-800"
+        className="w-full px-3 py-2 border border-yellow-600 bg-gray-700 text-gray-100 rounded focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
         placeholder="Password"
         required
       />
       <div className="w-full flex justify-between text-sm mt-[-8px]">
-        <p className=" cursor-pointer">Forgot your password?</p>
+        <p className="cursor-pointer text-gray-400 hover:text-yellow-400 transition-colors">Forgot your password?</p>
         {currentState === "Login" ? (
           <p
             onClick={() => setCurrentState("Sign Up")}
-            className=" cursor-pointer"
+            className="cursor-pointer text-yellow-400 hover:text-yellow-300 transition-colors"
           >
             Create account
           </p>
         ) : (
           <p
             onClick={() => setCurrentState("Login")}
-            className=" cursor-pointer"
+            className="cursor-pointer text-yellow-400 hover:text-yellow-300 transition-colors"
           >
             Login Here
           </p>
         )}
       </div>
-      <button className="bg-black text-white font-light px-8 py-2 mt-4">
+      <button className="bg-yellow-500 text-gray-900 font-semibold px-8 py-2 mt-4 rounded hover:bg-yellow-400 transition-colors w-full">
         {currentState === "Login" ? "Sign In" : "Sign Up"}
       </button>
     </form>
