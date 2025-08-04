@@ -65,13 +65,97 @@ const registerUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      cartData: {}
     });
 
     const user = await newUser.save();
+    console.log("User created:", { id: user._id, name: user.name, email: user.email });
 
     const token = createToken(user._id);
 
     res.json({ success: true, token, userId: user._id });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// Route for getting user profile
+const getUserProfile = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    
+    if (!userId) {
+      return res.json({ success: false, message: "User ID is required" });
+    }
+    
+    const user = await userModel.findById(userId).select('-password -cartData');
+    
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    
+    // Ensure we have creation date
+    const userProfile = {
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      createdAt: user.createdAt || user._id.getTimestamp(),
+      updatedAt: user.updatedAt
+    };
+    
+    res.json({ success: true, user: userProfile });
+  } catch (error) {
+    console.log("Error in getUserProfile:", error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// Route for updating user profile
+const updateUserProfile = async (req, res) => {
+  try {
+    const { userId, name, email } = req.body;
+    
+    // Check if email is already taken by another user
+    const existingUser = await userModel.findOne({ email, _id: { $ne: userId } });
+    if (existingUser) {
+      return res.json({ success: false, message: "Email already in use" });
+    }
+    
+    const updatedUser = await userModel.findByIdAndUpdate(
+      userId,
+      { name, email },
+      { new: true }
+    ).select('-password');
+    
+    res.json({ success: true, user: updatedUser });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// Route for changing password
+const changePassword = async (req, res) => {
+  try {
+    const { userId, currentPassword, newPassword } = req.body;
+    
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.json({ success: false, message: "Current password is incorrect" });
+    }
+    
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+    
+    await userModel.findByIdAndUpdate(userId, { password: hashedPassword });
+    
+    res.json({ success: true, message: "Password changed successfully" });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
@@ -98,4 +182,4 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin };
+export { loginUser, registerUser, adminLogin, getUserProfile, updateUserProfile, changePassword };

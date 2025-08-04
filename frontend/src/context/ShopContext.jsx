@@ -14,7 +14,7 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState({});
   const [products, setProducts] = useState([]);
   const [token, setToken] = useState("");
-  const [userId, setUserId] = useState(localStorage.getItem("userId") || "");
+  const [userId, setUserId] = useState("");
   const navigate = useNavigate();
 
   const addToCart = async (itemId, quantity = 1) => {
@@ -143,13 +143,31 @@ const ShopContextProvider = (props) => {
   }, []);
 
   useEffect(() => {
-    if (!token && localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-      getUserCart(localStorage.getItem("token"));
+    const storedToken = localStorage.getItem("token");
+    const storedUserId = localStorage.getItem("userId");
+    
+    if (!token && storedToken) {
+      setToken(storedToken);
+      getUserCart(storedToken);
     }
-    if (!userId && localStorage.getItem("userId")) {
-      setUserId(localStorage.getItem("userId"));
+    
+    if (!userId && storedUserId) {
+      setUserId(storedUserId);
     }
+    
+    // Extract userId from token if not in localStorage
+    if (token && !userId && !storedUserId) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        if (payload.id) {
+          setUserId(payload.id);
+          localStorage.setItem("userId", payload.id);
+        }
+      } catch (e) {
+        console.log("Could not extract userId from token in context:", e);
+      }
+    }
+    
     if (token) {
       getUserCart(token);
     }
