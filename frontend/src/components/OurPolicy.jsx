@@ -8,7 +8,7 @@ const OurPolicy = () => {
       <div className="text-center text-3xl py-8">
         <Title text1={"OUR"} text2={"POLICY"} />
         <div className="flex flex-col sm:flex-row justify-around gap-12 sm:gap-2 text-center py-20 text-xs sm:text-sm md:text-base">
-          <div>
+          <div className="policy-icon">
             <img
               src={assets.guarantee_icon}
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
@@ -21,7 +21,7 @@ const OurPolicy = () => {
               no hidden terms
             </p>
           </div>
-          <div>
+          <div className="policy-icon">
             <img
               src={assets.service_icon}
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
@@ -33,9 +33,15 @@ const OurPolicy = () => {
               <br /> we ensure long-term performance
             </p>
           </div>
-          <div>
-            <img src={assets.support_img} className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45" alt="" />
-            <p className="font-semibold text-yellow-400">Best customer support</p>
+          <div className="policy-icon">
+            <img
+              src={assets.support_img}
+              className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
+              alt=""
+            />
+            <p className="font-semibold text-yellow-400">
+              Best customer support
+            </p>
             <p className="text-gray-300">
               Quick response, real solutions, <br />
               your convenience matters.

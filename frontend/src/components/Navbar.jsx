@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { assets } from "../assets/assets";
 import { Link, NavLink } from "react-router-dom";
 import { ShopContext } from "../context/ShopContext";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
@@ -15,6 +16,8 @@ const Navbar = () => {
     setCartItems,
     setUserId,
   } = useContext(ShopContext);
+  
+  const { isDark, toggleTheme } = useTheme();
 
   const logout = () => {
     navigate("/login");
@@ -51,6 +54,12 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
+        <button
+          onClick={toggleTheme}
+          className="w-5 h-5 cursor-pointer nav-glow hover:scale-110 transition-all duration-300 gold-icon flex items-center justify-center"
+        >
+          {isDark ? '☀️' : '🌙'}
+        </button>
         <img
           onClick={() => {
             setShowSearch(true);

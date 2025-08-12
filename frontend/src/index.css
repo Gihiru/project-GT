@@ -9,6 +9,68 @@ body {
     color: #f3f4f6; /* gray-100 */
 }
 
+/* Light theme */
+html.light body {
+    background-color: #fefce8; /* yellow-50 */
+    color: #451a03; /* yellow-900 */
+}
+
+html.light .to-gray-800 {
+    --tw-gradient-to: rgb(255 243 178 / 60%) var(--tw-gradient-to-position)
+}
+
+
+html.light .from-gray-900 {
+  --tw-gradient-from: rgb(200 113 0 / 44%) var(--tw-gradient-from-position);
+}
+
+/* Our services slider icons theme */
+
+html.light .bg-yellow-500\/10 {
+  background-color: rgb(213 173 50 / 58%)
+}
+
+/* Light theme inputs */
+html.light input, html.light textarea, html.light select {
+    background-color: #fef3c7; /* yellow-100 */
+    color: #451a03; /* yellow-900 */
+    border-color: #d97706; /* yellow-600 */
+}
+
+html.light input::placeholder, html.light textarea::placeholder {
+    color: #92400e; /* yellow-700 */
+}
+
+/* Light theme text colors */
+html.light .text-gray-100 { color: #1c1917 !important; }
+html.light .text-gray-200 { color: #1c1917 !important; }
+html.light .text-gray-300 { color: #451a03 !important; }
+html.light .text-gray-400 { color: #451a03 !important; }
+html.light .text-gray-500 { color: #78350f !important; }
+html.light .text-white { color: #1c1917 !important; }
+html.light * { color: #1c1917; }
+html.light .text-yellow-400 { color: #a16207 !important; }
+html.light .text-yellow-500 { color: #92400e !important; }
+
+/* Light theme backgrounds */
+html.light .bg-gray-800 { background-color: #fef3c7 !important; }
+html.light .bg-gray-900 { background-color: #fefce8 !important; }
+html.light .bg-gray-700 { background-color: #fde68a !important; }
+html.light .bg-gray-800\/30 { background-color: rgba(254, 243, 199, 0.8) !important; }
+html.light .bg-gray-800\/50 { background-color: rgba(254, 243, 199, 0.9) !important; }
+
+/* Light theme borders */
+html.light .border-gray-300 { border-color: #d97706 !important; }
+html.light .border-yellow-600\/30 { border-color: rgba(217, 119, 6, 0.5) !important; }
+
+/* Light theme buttons */
+html.light .bg-yellow-500 { background-color: #d97706 !important; }
+html.light .hover\:bg-yellow-400:hover { background-color: #f59e0b !important; }
+
+/* Light theme cards and containers */
+html.light .bg-gray-800\/50 { background-color: rgba(254, 243, 199, 0.9) !important; }
+html.light .border-yellow-600\/30 { border-color: rgba(217, 119, 6, 0.5) !important; }
+
 a.active hr{
     display: block;
 }
@@ -38,6 +100,56 @@ a.active hr{
     color: #9ca3af; /* gray-400 */
   }
   
+  /* Light theme navigation */
+  html.light .nav-glow {
+    filter: drop-shadow(0 0 8px rgba(180, 83, 9, 0.6));
+  }
+  
+  html.light .nav-glow:hover {
+    filter: drop-shadow(0 0 12px rgba(180, 83, 9, 0.8));
+  }
+  
+  /* Light theme icons */
+  html.light .gold-icon {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(84%) saturate(2103%) hue-rotate(21deg) brightness(92%) contrast(96%);
+  }
+  
+  /* Light theme logo */
+  html.light .logo-shine {
+    filter: drop-shadow(0 0 8px rgba(180, 83, 9, 0.6));
+  }
+  
+  html.light .logo-shine:hover {
+    filter: drop-shadow(0 0 12px rgba(180, 83, 9, 0.8));
+  }
+  
+  /* Light theme hero section */
+  html.light .hero-glow {
+    box-shadow: 
+      0 0 8px rgba(180, 83, 9, 0.3),
+      0 0 16px rgba(180, 83, 9, 0.15),
+      inset 0 1px 0 rgba(217, 119, 6, 0.2);
+  }
+  
+  @keyframes lightMetallicGlow {
+    0%, 100% {
+      box-shadow: 
+        0 0 8px rgba(180, 83, 9, 0.3),
+        0 0 16px rgba(180, 83, 9, 0.15),
+        inset 0 1px 0 rgba(217, 119, 6, 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 0 12px rgba(180, 83, 9, 0.4),
+        0 0 24px rgba(180, 83, 9, 0.2),
+        inset 0 1px 0 rgba(217, 119, 6, 0.3);
+    }
+  }
+  
+  html.light .hero-glow {
+    animation: lightMetallicGlow 4s ease-in-out infinite;
+  }
+  
   /* Navigation glow effects */
   .nav-glow {
     filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
@@ -63,6 +175,11 @@ a.active hr{
     animation: textShine 3s ease-in-out infinite;
   }
   
+  /* Policy Icon light mode*/
+  .policy-icon img {
+  filter: brightness(0) saturate(100%) sepia(29%) saturate(1567%) hue-rotate(24deg) brightness(101%) contrast(103%);
+  }
+
   @keyframes textShine {
     0%, 100% {
       filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
