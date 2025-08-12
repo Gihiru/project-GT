@@ -21,6 +21,15 @@ const placeOrder = async (req, res) => {
   try {
     const { userId, items, amount, address } = req.body;
 
+    // Check if user is blocked
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    if (user.status === 'suspended') {
+      return res.json({ success: false, message: "Your account has been suspended. Please contact support." });
+    }
+
     // Check product availability and update quantities
     const orderItems = [];
     for (const item of items) {
@@ -82,6 +91,15 @@ const placeOrderStripe = async (req, res) => {
   try {
     const { userId, items, amount, address } = req.body;
     const { origin } = req.headers;
+
+    // Check if user is blocked
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    if (user.status === 'suspended') {
+      return res.json({ success: false, message: "Your account has been suspended. Please contact support." });
+    }
 
     // Check product availability and prepare order items
     const orderItems = [];
@@ -195,6 +213,15 @@ const verifyStripe = async (req, res) => {
 const placeOrderRazorpay = async (req, res) => {
   try {
     const { userId, items, amount, address } = req.body;
+
+    // Check if user is blocked
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.json({ success: false, message: "User not found" });
+    }
+    if (user.status === 'suspended') {
+      return res.json({ success: false, message: "Your account has been suspended. Please contact support." });
+    }
 
     // Check product availability and prepare order items
     const orderItems = [];

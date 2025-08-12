@@ -100,6 +100,7 @@ const getUserProfile = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      status: user.status || 'active',
       createdAt: user.createdAt || user._id.getTimestamp(),
       updatedAt: user.updatedAt
     };
@@ -182,4 +183,36 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin, getUserProfile, updateUserProfile, changePassword };
+// Admin route to get all users
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await userModel.find({}).select('-password -cartData');
+    res.json({ success: true, users });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// Admin route to delete user
+const deleteUser = async (req, res) => {
+  try {
+    const { userId } = req.body;
+    await userModel.findByIdAndDelete(userId);
+    res.json({ success: true, message: "User deleted successfully" });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+// Admin route to update user status
+const updateUserStatus = async (req, res) => {
+  try {
+    const { userId, status } = req.body;
+    await userModel.findByIdAndUpdate(userId, { status });
+    res.json({ success: true, message: "User status updated" });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { loginUser, registerUser, adminLogin, getUserProfile, updateUserProfile, changePassword, getAllUsers, deleteUser, updateUserStatus };

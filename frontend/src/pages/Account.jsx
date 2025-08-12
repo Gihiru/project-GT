@@ -349,7 +349,13 @@ const Account = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Account Status:</span>
-                    <span className="text-green-400 font-medium">Active</span>
+                    <span className={`font-medium ${
+                      userInfo.status === 'suspended' 
+                        ? 'text-red-400' 
+                        : 'text-green-400'
+                    }`}>
+                      {userInfo.status === 'suspended' ? 'Suspended' : 'Active'}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-400">Member Since:</span>
