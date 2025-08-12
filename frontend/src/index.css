@@ -167,7 +167,13 @@ a.active hr{
     filter: brightness(0) saturate(100%) invert(84%) sepia(29%) saturate(1567%) hue-rotate(24deg) brightness(101%) contrast(103%);
   }
   
+  html.light .text-red-400{
+    color: #ff1900;
+  }
 
+  html.light .text-green-400{
+    color: rgb(101, 203, 0);
+  }
   
   /* Payment method styling */
   .payment-logo {

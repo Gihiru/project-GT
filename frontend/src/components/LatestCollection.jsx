@@ -60,7 +60,7 @@ const BestSeller = () => {
     },
     {
       icon: assets.lightning_icon,
-      title: "Lighting Arrestor",
+      title: "Lightning Arrestor",
       desc: "Lightning strike protection for buildings",
     },
     {
