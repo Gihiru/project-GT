@@ -15,13 +15,17 @@ html.light body {
     color: #451a03; /* yellow-900 */
 }
 
+html.light .to-gray-900 {
+    --tw-gradient-to: #ffffff var(--tw-gradient-to-position);
+}
+
 html.light .to-gray-800 {
     --tw-gradient-to: rgb(255 243 178 / 60%) var(--tw-gradient-to-position)
 }
 
 
 html.light .from-gray-900 {
-  --tw-gradient-from: rgb(200 113 0 / 44%) var(--tw-gradient-from-position);
+  --tw-gradient-from: rgba(255, 255, 255, 0.44) var(--tw-gradient-from-position);
 }
 
 /* Our services slider icons theme */
@@ -176,7 +180,7 @@ a.active hr{
   }
   
   /* Policy Icon light mode*/
-  .policy-icon img {
+  html.light .policy-icon img {
   filter: brightness(0) saturate(100%) sepia(29%) saturate(1567%) hue-rotate(24deg) brightness(101%) contrast(103%);
   }
 
