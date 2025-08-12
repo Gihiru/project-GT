@@ -193,6 +193,7 @@ const ShopContextProvider = (props) => {
     token,
     userId,
     setUserId,
+    getProductsData,
   };
 
   return (

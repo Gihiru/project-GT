@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 const PlaceOrder = () => {
 
     const [method, setMethod] = useState('cod');
-    const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products, userId } = useContext(ShopContext);
+    const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products, userId, getProductsData } = useContext(ShopContext);
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -102,6 +102,7 @@ const PlaceOrder = () => {
                     const response = await axios.post(backendUrl + '/api/order/place',orderData,{headers:{token}})
                     if (response.data.success) {
                         setCartItems({})
+                        getProductsData()
                         navigate('/orders')
                     } else {
                         toast.error(response.data.message)
@@ -111,6 +112,7 @@ const PlaceOrder = () => {
                 case 'stripe':
                     const responseStripe = await axios.post(backendUrl + '/api/order/stripe',orderData,{headers:{token}})
                     if (responseStripe.data.success) {
+                        getProductsData()
                         const {session_url} = responseStripe.data
                         window.location.replace(session_url)
                     } else {
@@ -122,6 +124,7 @@ const PlaceOrder = () => {
 
                     const responseRazorpay = await axios.post(backendUrl + '/api/order/razorpay', orderData, {headers:{token}})
                     if (responseRazorpay.data.success) {
+                        getProductsData()
                         initPay(responseRazorpay.data.order)
                     }
 
