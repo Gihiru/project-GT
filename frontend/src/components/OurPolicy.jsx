@@ -1,7 +1,6 @@
 import React from "react";
 import Title from "./Title";
 import { assets } from "../assets/assets";
-import { Typography } from "./ui/Typography";
 
 const OurPolicy = () => {
   return (
@@ -15,14 +14,12 @@ const OurPolicy = () => {
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
               alt=""
             />
-            <Typography variant="h3" className="font-semibold text-base">
-              Guarantee
-            </Typography>
-            <Typography variant="small">
+            <p className="font-semibold text-yellow-400">Guarantee</p>
+            <p className="text-gray-300">
               Full coverage on products & services,
               <br />
               no hidden terms
-            </Typography>
+            </p>
           </div>
           <div className="policy-icon">
             <img
@@ -30,13 +27,11 @@ const OurPolicy = () => {
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
               alt=""
             />
-            <Typography variant="h3" className="font-semibold text-base">
-              After Service
-            </Typography>
-            <Typography variant="small">
+            <p className="font-semibold text-yellow-400">After Service</p>
+            <p className="text-gray-300">
               We don't just sell,
               <br /> we ensure long-term performance
-            </Typography>
+            </p>
           </div>
           <div className="policy-icon">
             <img
@@ -44,13 +39,13 @@ const OurPolicy = () => {
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
               alt=""
             />
-            <Typography variant="h3" className="font-semibold text-base">
+            <p className="font-semibold text-yellow-400">
               Best customer support
-            </Typography>
-            <Typography variant="small">
+            </p>
+            <p className="text-gray-300">
               Quick response, real solutions, <br />
               your convenience matters.
-            </Typography>
+            </p>
           </div>
         </div>
       </div>
