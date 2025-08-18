@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ShopContext } from '../context/ShopContext'
 import Title from './Title';
 import ProductItem from './ProductItem';
+import { Typography } from './ui/Typography';
 
 const BestSeller = () => {
 
@@ -17,9 +18,9 @@ const BestSeller = () => {
     <div className='my-10 px-4'>
       <div className='text-center text-3xl py-8'>
         <Title text1={'TOP SELLING'} text2={'PRODUCTS'}/>
-        <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-300'>
+        <Typography variant="p" className='w-3/4 m-auto text-xs sm:text-sm md:text-base'>
         Here are some of our top-selling products that have been loved by our customers. Explore the latest trends and find your favorites among these popular items.
-        </p>
+        </Typography>
       </div>
 
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
