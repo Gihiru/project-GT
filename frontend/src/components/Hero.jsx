@@ -1,9 +1,11 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import ElectricitySparks from "./ElectricitySparks";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col sm:flex-row border border-yellow-600/30 bg-gray-900 hero-glow rounded-lg">
+    <div className="flex flex-col sm:flex-row border border-yellow-600/30 bg-gray-900 hero-glow rounded-lg relative overflow-hidden">
+      <ElectricitySparks />
       {/* Hero Left Side */}
       <div className="w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0">
         <div className="text-white">
