@@ -1,6 +1,7 @@
 import React from "react";
 import Title from "./Title";
 import { assets } from "../assets/assets";
+import { Typography } from "./ui/Typography";
 
 const OurPolicy = () => {
   return (
@@ -14,12 +15,14 @@ const OurPolicy = () => {
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
               alt=""
             />
-            <p className="font-semibold text-yellow-400">Guarantee</p>
-            <p className="text-gray-300">
+            <Typography variant="h3" className="font-semibold text-base">
+              Guarantee
+            </Typography>
+            <Typography variant="small">
               Full coverage on products & services,
               <br />
               no hidden terms
-            </p>
+            </Typography>
           </div>
           <div className="policy-icon">
             <img
@@ -27,11 +30,13 @@ const OurPolicy = () => {
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
               alt=""
             />
-            <p className="font-semibold text-yellow-400">After Service</p>
-            <p className="text-gray-300">
+            <Typography variant="h3" className="font-semibold text-base">
+              After Service
+            </Typography>
+            <Typography variant="small">
               We don't just sell,
               <br /> we ensure long-term performance
-            </p>
+            </Typography>
           </div>
           <div className="policy-icon">
             <img
@@ -39,13 +44,13 @@ const OurPolicy = () => {
               className="w-12 m-auto mb-5 filter brightness-0 invert sepia-100 saturate-200 hue-rotate-45"
               alt=""
             />
-            <p className="font-semibold text-yellow-400">
+            <Typography variant="h3" className="font-semibold text-base">
               Best customer support
-            </p>
-            <p className="text-gray-300">
+            </Typography>
+            <Typography variant="small">
               Quick response, real solutions, <br />
               your convenience matters.
-            </p>
+            </Typography>
           </div>
         </div>
       </div>
