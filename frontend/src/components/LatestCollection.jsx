@@ -6,7 +6,6 @@ import { assets } from "../assets/assets";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Typography } from "./ui/Typography";
 
 const BestSeller = () => {
   const { products } = useContext(ShopContext);
@@ -116,12 +115,12 @@ const BestSeller = () => {
                             alt={service.title}
                           />
                         </div>
-                        <Typography variant="h3" className="font-semibold text-lg mb-3 text-center h-14 flex items-center justify-center">
+                        <p className="font-semibold text-lg mb-3 text-center h-14 flex items-center justify-center text-yellow-400">
                           {service.title}
-                        </Typography>
-                        <Typography variant="small" className="text-center h-10">
+                        </p>
+                        <p className="text-gray-300 text-sm text-center h-10">
                           {service.desc}
-                        </Typography>
+                        </p>
                       </div>
                     </div>
                   </div>
